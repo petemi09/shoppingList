@@ -1,11 +1,14 @@
-var shoppingModel = new ShoppingList()
+
+var shoppinglist = new ShoppingList()
+var view = new View(shoppinglist)
+myDB = new LocalStorageSaver(shoppinglist, "matts_storage")
 
 function clickedon() {
     let rowcolids = ['itemname', 'qty', 'store', 'category', 'price', 'priority']
     let vals = {}
-    for (let cid of rowcolids) {
-        vals[cid] = document.getElementById(cid).value;
+    for (let id of rowcolids) {
+        vals[id] = document.getElementById(id).value;
     }
-    let it = new Item(vals.itemname, vals.qty, vals.priority, vals.store, vals.category, vals.price)
-    shoppingModel.addItem(it)
+    let item = new Item(vals.itemname, vals.qty, vals.priority, vals.store, vals.category, vals.price)
+    shoppinglist.addItem(item)
 }
